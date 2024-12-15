@@ -1,0 +1,23 @@
+{
+    "name": "Windows On Linux Dev Container",
+    "image": "gregewing/windows_on_linux:peru_windows-server-2022-standard-x64-eval",
+    "privileged": true,
+    "runArgs": [
+        "--cgroupns=host",
+        "--device=/dev/kvm",
+        "--device=/dev/net/tun",
+        "-v=/sys/fs/cgroup:/sys/fs/cgroup:rw",
+        "--cap-add=NET_ADMIN",
+        "--cap-add=SYS_ADMIN"
+    ],
+    "appPort": [
+        "3389:3389/tcp"
+    ],
+    "containerEnv": {
+        "MEMORY": "4096",
+        "CPU": "4",
+        "DISK_SIZE": "50"
+    },
+    "onCreateCommand": "/startup.sh",
+    "waitFor": "onCreateCommand"
+}
