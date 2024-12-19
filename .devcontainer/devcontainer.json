@@ -1,6 +1,8 @@
 {
     "name": "Windows On Linux Dev Container",
-    "image": "gregewing/windows_on_linux:peru_windows-server-2022-standard-x64-eval",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "privileged": true,
     "runArgs": [
         "--cgroupns=host",
@@ -11,7 +13,9 @@
         "--cap-add=SYS_ADMIN"
     ],
     "appPort": [
-        "3389:3389/tcp"
+        "8080:8080",
+        "3389:3389/tcp",
+        "3389:3389/udp"
     ],
     "containerEnv": {
         "MEMORY": "4096",
@@ -19,5 +23,7 @@
         "DISK_SIZE": "50"
     },
     "onCreateCommand": "/startup.sh",
-    "waitFor": "onCreateCommand"
+    "waitFor": "onCreateCommand",
+    "postCreateCommand": "/root/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 8080",
+    "remoteUser": "root"
 }
