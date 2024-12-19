@@ -1,6 +1,6 @@
 FROM gregewing/windows_on_linux:peru_windows-server-2022-standard-x64-eval
 
-RUN apt-get update && apt-get -y install python3 python-is-python3 xdotool wget tar net-tools && \
+RUN apt-get update && apt-get -y install sudo bash git python3 python-is-python3 curl socat libgit2-1.1 xdotool wget tar net-tools && \
     apt-get -y full-upgrade && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
