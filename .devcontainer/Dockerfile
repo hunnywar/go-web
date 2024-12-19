@@ -9,6 +9,7 @@ RUN wget -O - https://github.com/novnc/noVNC/archive/v1.5.0.tar.gz | tar -xzv -C
 
 COPY Vagrantfile /vagrant/Vagrantfile
 COPY startup.sh startup.sh
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENV DEBIAN_FRONTEND=noninteractive TERM=xterm-256color MEMORY=4096 CPU=4 DISK_SIZE=50
 

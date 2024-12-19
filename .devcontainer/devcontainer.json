@@ -24,5 +24,6 @@
     },
     "onCreateCommand": "/startup.sh",
     "waitFor": "onCreateCommand",
+    "postStartCommand": "cd /etc/supervisor/conf.d && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf",
     "remoteUser": "root"
 }

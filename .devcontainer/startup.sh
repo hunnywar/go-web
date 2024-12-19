@@ -66,7 +66,4 @@ if test -f Vagrantfile; then
   vagrant up
 fi
 
-# Start webserver
-  /root/novnc/utils/novnc_proxy --vnc localhost:5900 --listen 8080 > /dev/null 2>&1
-
 exec "$@"
